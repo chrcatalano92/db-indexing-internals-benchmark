@@ -15,7 +15,9 @@ NUM_QUERIES = 200
 def compute_recall_at_k(ground_truth, predicted):
     recalls = []
     for gt, pred in zip(ground_truth, predicted):
-        recalls.append(len(set(gt).intersection(set(pred))) / len(gt))
+        gt_flat = set(np.asarray(gt).ravel().tolist())
+        pred_flat = set(np.asarray(pred).ravel().tolist())
+        recalls.append(len(gt_flat.intersection(pred_flat)) / len(gt_flat))
     return float(np.mean(recalls)) * 100.0
 
 

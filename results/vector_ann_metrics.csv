@@ -1,0 +1,10 @@
+algorithm,complexity,build_time_s,p50_ms,p99_ms,recall_at_10,ram_mb
+Ball Tree (768D),Degrades to O(n) in high-D,1.97,25.372,53.297,100.0,117.52
+HNSW Graph (768D),O(log n) Multi-Layer Graph,17.95,1.726,2.753,17.35,159.73
+ScaNN AVQ (768D),Sub-ms Anisotropic Quantization,25.52,0.515,0.995,32.1,158.8
+Ball Tree (1536D),Degrades to O(n) in high-D,5.32,46.182,85.392,100.0,240.24
+HNSW Graph (1536D),O(log n) Multi-Layer Graph,40.24,2.547,9.175,15.05,303.39
+ScaNN AVQ (1536D),Sub-ms Anisotropic Quantization,50.02,0.553,1.02,28.8,312.22
+Ball Tree (3072D),Degrades to O(n) in high-D,9.47,93.358,125.133,100.0,480.73
+HNSW Graph (3072D),O(log n) Multi-Layer Graph,128.57,5.0,15.609,11.2,593.0
+ScaNN AVQ (3072D),Sub-ms Anisotropic Quantization,91.53,1.011,5.464,24.9,630.73

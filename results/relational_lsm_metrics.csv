@@ -1,0 +1,6 @@
+structure,workload,write_ops_sec,build_time_s,p50_ms,p95_ms,p99_ms,footprint_mb
+B+ Tree (PostgreSQL),Point Lookup O(log_B n),233067.5,0.43,0.3637,0.8266,1.5416,21.45
+GiST R-Tree (PostgreSQL),2D Spatial Range (Skewed),233067.5,3.41,11.1501,21.1554,30.6481,63.6
+SP-GiST QuadTree (PostgreSQL),2D Spatial Range (Skewed),233067.5,5.58,11.5507,22.0438,32.6361,43.2
+LSM-Tree (RocksDB),Write-Heavy + Point Lookup,527032.2,1.9,0.0101,0.0159,0.0685,14.23
+Radix Tree (Compact Trie),Prefix Search O(k),55587.2,5.4,2.4685,3.9059,12.4529,88.45
