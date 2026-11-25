@@ -76,7 +76,7 @@ Choosing an index structure is a fundamental trade-off between **asymptotic time
 ## 4. Quick Start
 
 ```bash
-git clone https://github.com
+[git clone https://github.com](https://github.com/chrcatalano92/db-indexing-internals-benchmark.git)
 cd db-indexing-internals-benchmark
 docker compose up --build
 docker compose down
