@@ -1,0 +1,50 @@
+services:
+  postgres:
+    image: pgvector/pgvector:pg17
+    container_name: bench_postgres
+    environment:
+      POSTGRES_USER: bench
+      POSTGRES_PASSWORD: bench_password
+      POSTGRES_DB: indexing_lab
+    command: >
+      postgres
+      -c shared_buffers=512MB
+      -c work_mem=64MB
+      -c maintenance_work_mem=512MB
+      -c max_parallel_workers_per_gather=2
+    deploy:
+      resources:
+        limits:
+          memory: 2G
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U bench -d indexing_lab"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  benchmark-runner:
+    build: .
+    container_name: bench_runner
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      PG_HOST: postgres
+      PG_PORT: 5432
+      PG_DB: indexing_lab
+      PG_USER: bench
+      PG_PASSWORD: bench_password
+      NUM_RECORDS: 1000000
+      NUM_VECTORS: 50000
+    deploy:
+      resources:
+        limits:
+          memory: 4G
+    volumes:
+      - ./results:/app/results
+      - rocksdb_data:/tmp/rocksdb_bench
+
+volumes:
+  rocksdb_data:
